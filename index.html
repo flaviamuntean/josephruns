@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>John Doe Running Coach | 5K to ultra coaching</title>
+<meta name="description" content="Personalised running plans and real coaching for runners chasing a first 5K, a marathon PB or a first ultra.">
+
+<!-- Social preview: upload a 1200x630 image as og-image.jpg and set your real URL -->
+<meta property="og:title" content="John Doe Running Coach">
+<meta property="og:description" content="Personalised coaching from 5K to ultra.">
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO/og-image.jpg">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0F100D;
+    --surface: #1A1C17;
+    --line: #2A2C26;
+    --line-strong: #4A4C44;
+    --text: #F2F1EA;
+    --text-soft: #C9CABF;
+    --text-muted: #A3A69B;
+    --accent: #C8F04A;
+    --display: "Archivo", "Arial Black", Impact, sans-serif;
+    --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: var(--text); }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  section { scroll-margin-top: 24px; }
+  .section { padding-top: 112px; }
+
+  h1, h2, h3 { font-family: var(--display); margin: 0; }
+  h2 {
+    font-weight: 900;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  h3 { font-weight: 800; font-size: 1.4rem; }
+  p { margin: 0; }
+  .soft { color: var(--text-soft); }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 14px 26px;
+    border-radius: 999px; font-weight: 600; text-decoration: none;
+    border: 1.5px solid var(--line-strong); color: var(--text);
+    font: inherit; font-weight: 600; cursor: pointer; background: none;
+  }
+  .btn:hover { border-color: var(--text); color: var(--text); }
+  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn-primary:hover { background: #D8F77A; border-color: #D8F77A; color: var(--bg); }
+
+  /* Header */
+  .site-header .wrap {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 16px; padding-top: 20px; padding-bottom: 20px;
+  }
+  .logo { font-family: var(--display); font-weight: 900; font-size: 1.35rem; text-decoration: none; letter-spacing: -0.02em; }
+  .logo span { color: var(--accent); }
+  .site-nav { display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500; }
+  .site-nav a { text-decoration: none; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 96px; }
+  .hero-text { display: flex; flex-direction: column; gap: 28px; }
+  .hero h1 {
+    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+  .hero h1 .hl { color: var(--accent); }
+  .hero .lead { font-size: 1.15rem; color: var(--text-soft); max-width: 34rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .photo {
+    background: var(--surface); border: 1px dashed var(--line-strong); border-radius: 20px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 24px; color: var(--text-muted); font-size: 15px; overflow: hidden;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-tall { aspect-ratio: 4 / 5; }
+  .photo-square { aspect-ratio: 1 / 1; }
+
+  /* Distances strip */
+  .distances { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .distances .wrap {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 20px;
+    padding-top: 28px; padding-bottom: 28px;
+    font-family: var(--display); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(1.3rem, 3vw, 2.2rem); letter-spacing: -0.01em;
+  }
+  .distances .sep { color: var(--line-strong); }
+  .distances .ultra { color: var(--accent); }
+
+  /* Grids and cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .card { background: var(--surface); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; list-style: none; padding: 0; margin: 0; counter-reset: step; }
+  .steps li { border-top: 2px solid var(--accent); padding-top: 20px; display: flex; flex-direction: column; gap: 10px; counter-increment: step; }
+  .steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--display); font-weight: 900; font-size: 2.4rem; color: var(--accent); line-height: 1; }
+
+  /* Testimonials */
+  figure.card { margin: 0; gap: 20px; }
+  blockquote { margin: 0; font-size: 1.2rem; line-height: 1.45; }
+  figcaption { color: var(--text-muted); font-size: 15px; }
+  figcaption strong { color: var(--accent); font-weight: 600; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: center; }
+  .about h2 { margin-bottom: 0; }
+  .about-text { display: flex; flex-direction: column; gap: 20px; }
+  .about-text .lead { font-size: 1.15rem; }
+
+  /* Pricing */
+  .pricing-intro { margin: -24px 0 32px; color: var(--text-soft); }
+  .plan { background: var(--surface); border-radius: 18px; padding: 36px; display: flex; flex-direction: column; gap: 20px; }
+  .plan .price { font-family: var(--display); font-weight: 900; font-size: 3rem; line-height: 1; }
+  .plan .per { color: var(--text-muted); font-family: var(--body); font-weight: 400; font-size: 1rem; }
+  .plan ul { margin: 0; padding-left: 20px; color: var(--text-soft); display: flex; flex-direction: column; gap: 8px; }
+  .plan .btn { margin-top: auto; width: 100%; }
+  .plan-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .badge { background: var(--bg); color: var(--accent); font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+  .plan-featured { background: var(--text); color: var(--bg); }
+  .plan-featured .per { color: #4A4C44; }
+  .plan-featured ul { color: #2A2C26; }
+  .plan-featured .btn { background: var(--bg); color: var(--text); border-color: var(--bg); }
+  .plan-featured .btn:hover { background: #2A2C26; border-color: #2A2C26; }
+  .payments-note { margin-top: 16px; color: var(--text-muted); font-size: 14px; }
+
+  /* FAQ */
+  .faq { max-width: 820px; }
+  details { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 8px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 1.15rem; min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 16px; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.5rem; color: var(--accent); line-height: 1; }
+  details[open] summary::after { content: "−"; }
+  details p { color: var(--text-soft); padding-top: 4px; }
+
+  /* Booking */
+  .book { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; padding-bottom: 112px; }
+  .book h2 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 0.95; margin-bottom: 20px; }
+  .book h2 .hl { color: var(--accent); }
+  .book .lead { font-size: 1.15rem; color: var(--text-soft); }
+
+  .cal-embed {
+    margin-top: 32px; min-height: 120px; border: 1px dashed var(--line-strong); border-radius: 16px;
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;
+    color: var(--text-muted); font-size: 15px;
+  }
+
+  form.contact { background: var(--surface); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 6px; }
+  form.contact h3 { margin-bottom: 12px; }
+  form.contact label { font-size: 14px; font-weight: 600; margin-top: 10px; }
+  form.contact input, form.contact select, form.contact textarea {
+    background: var(--bg); color: var(--text); border: 1px solid var(--line-strong);
+    border-radius: 12px; padding: 13px 14px; font: inherit; min-height: 48px; width: 100%;
+  }
+  form.contact textarea { min-height: 110px; resize: vertical; }
+  form.contact input:focus, form.contact select:focus, form.contact textarea:focus { border-color: var(--accent); outline: none; }
+  form.contact .btn { margin-top: 18px; }
+  .hp { position: absolute; left: -9999px; }
+  .form-status { margin-top: 12px; font-size: 15px; min-height: 1.5em; }
+  .form-status.ok { color: var(--accent); }
+  .form-status.err { color: #FFB4A8; }
+
+  /* Footer */
+  .site-footer { border-top: 1px solid var(--line); }
+  .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 32px; padding-bottom: 32px; color: var(--text-muted); font-size: 14px; }
+  .site-footer nav { display: flex; flex-wrap: wrap; gap: 24px; }
+  .site-footer a { color: var(--text-muted); }
+  .site-footer a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .section { padding-top: 80px; }
+    .site-nav { order: 3; width: 100%; gap: 18px; }
+    .hero { padding-top: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top">JOHN DOE<span>.</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary" href="#book">Book a free call</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="wrap hero">
+    <div class="hero-text">
+      <h1>Run further.<br>Run smarter.<br><span class="hl">Enjoy every mile.</span></h1>
+      <p class="lead">Personalised training plans and real coaching for runners chasing their first 5K, a marathon PB or their first ultra.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#book">Book a free intro call</a>
+        <a class="btn" href="#pricing">See pricing</a>
+      </div>
+    </div>
+    <!-- Replace with: <div class="photo photo-tall"><img src="hero.jpg" alt="John running on a trail"></div> -->
+    <div class="photo photo-tall">Action photo of John on a trail</div>
+  </section>
+
+  <section class="distances" aria-label="Distances coached">
+    <div class="wrap">
+      <span>5K</span><span class="sep" aria-hidden="true">/</span>
+      <span>10K</span><span class="sep" aria-hidden="true">/</span>
+      <span>Half</span><span class="sep" aria-hidden="true">/</span>
+      <span>Marathon</span><span class="sep" aria-hidden="true">/</span>
+      <span class="ultra">Ultra</span>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>Who it’s for</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Getting started</h3>
+        <p class="soft">New to running or coming back after time off. Build a habit and reach your first 5K or 10K without getting hurt.</p>
+      </div>
+      <div class="card">
+        <h3>Chasing a PB</h3>
+        <p class="soft">Half or full marathon on the calendar? Structured blocks, smart pacing and a proper taper so you arrive on the start line ready.</p>
+      </div>
+      <div class="card">
+        <h3>Going ultra</h3>
+        <p class="soft">Back-to-back long runs, hills, fuelling and kit strategy for 50K and beyond, on road or trail.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="how">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li>
+        <h3>Free intro call</h3>
+        <p class="soft">20 minutes to talk about your goals, running history, injuries and how much time you really have.</p>
+      </li>
+      <li>
+        <h3>Your plan, your app</h3>
+        <p class="soft">A plan built around your week, delivered to [TrainingPeaks / Strava] and synced to your watch.</p>
+      </li>
+      <li>
+        <h3>Check in, adjust</h3>
+        <p class="soft">Weekly feedback on your sessions, and changes when life, legs or weather get in the way.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap section">
+    <h2>Runners say</h2>
+    <div class="grid">
+      <figure class="card">
+        <blockquote>“[Client quote with a concrete result]”</blockquote>
+        <figcaption>[Name], <strong>[result, e.g. first marathon]</strong></figcaption>
+      </figure>
+      <figure class="card">
+        <blockquote>“[Client quote with a concrete result]”</blockquote>
+        <figcaption>[Name], <strong>[result, e.g. half marathon PB]</strong></figcaption>
+      </figure>
+      <figure class="card">
+        <blockquote>“[Client quote with a concrete result]”</blockquote>
+        <figcaption>[Name], <strong>[result, e.g. first 50K]</strong></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap section about" id="about">
+    <!-- Replace with: <div class="photo photo-square"><img src="john.jpg" alt="John Doe"></div> -->
+    <div class="photo photo-square">Portrait of John</div>
+    <div class="about-text">
+      <h2>Hi, I’m John</h2>
+      <p class="soft lead">[Short running story: how John started, the races and ultras he’s finished, and why he coaches.]</p>
+      <p class="soft">[Qualifications, e.g. England Athletics Coach in Running Fitness, UESCA Ultrarunning Coach.]</p>
+      <p><a href="#book">Talk to me about your goal</a></p>
+    </div>
+  </section>
+
+  <section class="wrap section" id="pricing">
+    <h2>Pricing</h2>
+    <p class="pricing-intro">Billed monthly. No contract, cancel any time.</p>
+    <div class="grid">
+      <div class="plan">
+        <h3>Plan</h3>
+        <p><span class="price">£[PRICE]</span> <span class="per">/ month</span></p>
+        <ul>
+          <li>Personalised plan in your app</li>
+          <li>Monthly plan refresh</li>
+          <li>Email support</li>
+        </ul>
+        <!-- Paste the Stripe Payment Link for this tier -->
+        <a class="btn" href="https://buy.stripe.com/YOUR_PLAN_LINK">Subscribe to Plan</a>
+      </div>
+
+      <div class="plan plan-featured">
+        <div class="plan-head">
+          <h3>Coached</h3>
+          <span class="badge">Most popular</span>
+        </div>
+        <p><span class="price">£40</span> <span class="per">/ month</span></p>
+        <ul>
+          <li>Everything in Plan</li>
+          <li>Weekly check-ins and adjustments</li>
+          <li>Feedback on every session</li>
+          <li>Race-day pacing and fuelling plan</li>
+        </ul>
+        <a class="btn" href="https://buy.stripe.com/YOUR_COACHED_LINK">Subscribe to Coached</a>
+      </div>
+
+      <div class="plan">
+        <h3>1:1 Ultra</h3>
+        <p><span class="price">£[PRICE]</span> <span class="per">/ month</span></p>
+        <ul>
+          <li>Everything in Coached</li>
+          <li>Monthly video call</li>
+          <li>Hills, kit and crew strategy</li>
+          <li>Message any time</li>
+        </ul>
+        <a class="btn" href="https://buy.stripe.com/YOUR_ULTRA_LINK">Subscribe to 1:1 Ultra</a>
+      </div>
+    </div>
+    <p class="payments-note">Secure card payments by Stripe. Manage or cancel your subscription any time from the link in your receipt email.</p>
+  </section>
+
+  <section class="wrap section faq" id="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Do I need to be fast?</summary>
+      <p>Not at all. Plans start from where you are now, whatever your pace.</p>
+    </details>
+    <details>
+      <summary>What if I get injured?</summary>
+      <p>We adjust the plan straight away and work around it, alongside advice from your physio.</p>
+    </details>
+    <details>
+      <summary>Can I cancel?</summary>
+      <p>Yes, any time. You keep access until the end of the month you’ve paid for.</p>
+    </details>
+    <details>
+      <summary>Which app do I need?</summary>
+      <p>[TrainingPeaks / Strava]. The free version is fine, and it syncs with most running watches.</p>
+    </details>
+  </section>
+
+  <section class="wrap section book" id="book">
+    <div>
+      <h2>Ready when<br><span class="hl">you are.</span></h2>
+      <p class="lead">Book a free 20-minute call. No pressure, just a chat about where you want to run.</p>
+
+      <!--
+        CAL.COM EMBED
+        In Cal.com: open your "Intro call" event > Embed > Inline > copy the snippet,
+        then replace the whole <div class="cal-embed"> below with it.
+        Or, simpler: replace it with a button:
+        <a class="btn btn-primary" href="https://cal.com/YOUR-USERNAME/intro-call">Pick a time</a>
+      -->
+      <div class="cal-embed">Cal.com booking calendar goes here</div>
+    </div>
+
+    <!--
+      WEB3FORMS
+      1. Get a free access key at web3forms.com using John's email.
+      2. Paste it into the access_key value below.
+      Submissions are emailed straight to that address.
+    -->
+    <form class="contact" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <h3>Or send a message</h3>
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New enquiry from the coaching website">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+
+      <label for="goal">Your goal</label>
+      <select id="goal" name="goal">
+        <option>5K or 10K</option>
+        <option>Half marathon</option>
+        <option>Marathon</option>
+        <option>Ultra</option>
+        <option>Not sure yet</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Races coming up, running history, anything useful"></textarea>
+
+      <button class="btn btn-primary" type="submit">Send message</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> John Doe Running Coach</span>
+    <nav aria-label="Footer">
+      <a href="https://instagram.com/YOUR_HANDLE">Instagram</a>
+      <a href="https://www.strava.com/athletes/YOUR_ID">Strava</a>
+      <a href="#book">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Sends the form without leaving the page; falls back to a normal POST if JS is off.
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    status.className = 'form-status';
+    status.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        form.reset();
+        status.className = 'form-status ok';
+        status.textContent = 'Message sent. John will reply within a couple of days.';
+      } else {
+        throw new Error(data.message || 'Request failed');
+      }
+    } catch (err) {
+      status.className = 'form-status err';
+      status.textContent = 'Message not sent. Check your connection and try again, or email john@example.com.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
