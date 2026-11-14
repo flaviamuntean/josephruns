@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>John Doe Running Coach | 5K to ultra coaching</title>
+<title>Joseph Running Coach | 5K to ultra coaching</title>
 <meta name="description" content="Personalised running plans and real coaching for runners chasing a first 5K, a marathon PB or a first ultra.">
 
 <!-- Social preview: upload a 1200x630 image as og-image.jpg and set your real URL -->
-<meta property="og:title" content="John Doe Running Coach">
+<meta property="og:title" content="Joseph Running Coach">
 <meta property="og:description" content="Personalised coaching from 5K to ultra.">
 <meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO/og-image.jpg">
 <meta property="og:type" content="website">
@@ -108,6 +108,7 @@
     padding: 24px; color: var(--text-muted); font-size: 15px; overflow: hidden;
   }
   .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo:has(img) { padding: 0; border: 0; }
   .photo-tall { aspect-ratio: 4 / 5; }
   .photo-square { aspect-ratio: 1 / 1; }
 
@@ -136,6 +137,9 @@
   blockquote { margin: 0; font-size: 1.2rem; line-height: 1.45; }
   figcaption { color: var(--text-muted); font-size: 15px; }
   figcaption strong { color: var(--accent); font-weight: 600; }
+  .quote-long blockquote { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden; }
+  .quote-long.open blockquote { display: block; }
+  .read-more { align-self: flex-start; background: none; border: 0; padding: 0; color: var(--accent); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
 
   /* About */
   .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: center; }
@@ -174,11 +178,7 @@
   .book h2 .hl { color: var(--accent); }
   .book .lead { font-size: 1.15rem; color: var(--text-soft); }
 
-  .cal-embed {
-    margin-top: 32px; min-height: 120px; border: 1px dashed var(--line-strong); border-radius: 16px;
-    display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;
-    color: var(--text-muted); font-size: 15px;
-  }
+  .cal-embed { margin-top: 32px; width: 100%; overflow: auto; }
 
   form.contact { background: var(--surface); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 6px; }
   form.contact h3 { margin-bottom: 12px; }
@@ -213,7 +213,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="#top">JOHN DOE<span>.</span></a>
+    <a class="logo" href="#top">JOSEPH<span>.</span></a>
     <nav class="site-nav" aria-label="Main">
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
@@ -235,8 +235,7 @@
         <a class="btn" href="#pricing">See pricing</a>
       </div>
     </div>
-    <!-- Replace with: <div class="photo photo-tall"><img src="hero.jpg" alt="John running on a trail"></div> -->
-    <div class="photo photo-tall">Action photo of John on a trail</div>
+    <div class="photo photo-tall"><img src="joe.jpg" alt="Joseph running a trail race through woodland"></div>
   </section>
 
   <section class="distances" aria-label="Distances coached">
@@ -276,7 +275,7 @@
       </li>
       <li>
         <h3>Your plan, your app</h3>
-        <p class="soft">A plan built around your week, delivered to [TrainingPeaks / Strava] and synced to your watch.</p>
+        <p class="soft">A plan built around your week, with your runs synced to Strava so we can track your progress.</p>
       </li>
       <li>
         <h3>Check in, adjust</h3>
@@ -288,13 +287,15 @@
   <section class="wrap section">
     <h2>Runners say</h2>
     <div class="grid">
-      <figure class="card">
-        <blockquote>“[Client quote with a concrete result]”</blockquote>
-        <figcaption>[Name], <strong>[result, e.g. first marathon]</strong></figcaption>
+      <figure class="card quote-long">
+        <blockquote>“Joe helped me to prepare for my first marathon and I couldn’t have asked for more. Not only were Joe’s plans clear, easy to execute and varied, but he was also a constant support and friend throughout. He was kind and helpful when the runs didn’t go to plan, and was quick to adapt the training to my personal plans, mood, etc. He filled me with a huge amount of confidence so that when race day came along, I knew I had done the right amount of training to get me through. I have always struggled with confidence, but for the first time in a long time I believed I could do it - all thanks to him. Joe loves running and being outdoors, and this shows in his dedication to the sport. He’s one of the reasons that I’ve got the running bug, and I’ll be forever thankful for him.”</blockquote>
+        <button class="read-more" type="button" aria-expanded="false">Read more</button>
+        <figcaption>Bella W, <strong>Edinburgh Marathon</strong></figcaption>
       </figure>
-      <figure class="card">
-        <blockquote>“[Client quote with a concrete result]”</blockquote>
-        <figcaption>[Name], <strong>[result, e.g. half marathon PB]</strong></figcaption>
+      <figure class="card quote-long">
+        <blockquote>“Joe put together an 8-week running plan for me, tailored specifically to help me train for and perform well in the Farnham Pilgrims marathon, and it was an incredibly effective and well-balanced programme. Joe’s plan had a great balance between structured workouts and flexibility. It outlined key running sessions each week—long runs, speed workouts, and recovery runs—while leaving room to adapt to how I’m feeling. I particularly appreciated this flexibility when life got in the way, and I had to shift things around while still staying on track. Joe didn’t neglect the importance of strength and cross-training. Each week included a couple of sessions focused on core strength and mobility exercises to prevent injuries, which was crucial for keeping me strong and healthy throughout the plan. The cross-training option to include a cycle also helped me recover while staying active.”</blockquote>
+        <button class="read-more" type="button" aria-expanded="false">Read more</button>
+        <figcaption>Joe C, <strong>Farnham Pilgrims Marathon</strong></figcaption>
       </figure>
       <figure class="card">
         <blockquote>“[Client quote with a concrete result]”</blockquote>
@@ -304,11 +305,11 @@
   </section>
 
   <section class="wrap section about" id="about">
-    <!-- Replace with: <div class="photo photo-square"><img src="john.jpg" alt="John Doe"></div> -->
-    <div class="photo photo-square">Portrait of John</div>
+    <div class="photo photo-square"><img src="joe.jpg" alt="Joseph running a trail race through woodland"></div>
     <div class="about-text">
-      <h2>Hi, I’m John</h2>
-      <p class="soft lead">[Short running story: how John started, the races and ultras he’s finished, and why he coaches.]</p>
+      <h2>Hi, I’m Joseph</h2>
+      <p class="soft lead">I’m passionate about helping people fulfil their potential, whether that’s lacing up for a first 5K, chasing a marathon PB or stepping up to an ultra.</p>
+      <p class="soft">My background is in teaching, and it shapes how I coach. Real progress comes from clear plans, steady encouragement and adapting to the person in front of you, not squeezing you into a template. I back every plan with a thorough library of research, running literature and my own experience as a runner, so each session has a reason behind it. Together we’ll build the fitness and confidence to get you to the start line ready, and across the finish line proud.</p>
       <p class="soft">[Qualifications, e.g. England Athletics Coach in Running Fitness, UESCA Ultrarunning Coach.]</p>
       <p><a href="#book">Talk to me about your goal</a></p>
     </div>
@@ -320,11 +321,13 @@
     <div class="grid">
       <div class="plan">
         <h3>Plan</h3>
-        <p><span class="price">£[PRICE]</span> <span class="per">/ month</span></p>
+        <p><span class="price">£20</span> <span class="per">/ month</span></p>
+        <p class="soft">Hands-off coaching: a plan built for you, then you run it on your own terms.</p>
         <ul>
-          <li>Personalised plan in your app</li>
-          <li>Monthly plan refresh</li>
-          <li>Email support</li>
+          <li>Training plan built around your target event</li>
+          <li>Custom pace goals for every session</li>
+          <li>Pitched at your experience and current fitness</li>
+          <li>A new block each month to keep you progressing</li>
         </ul>
         <!-- Paste the Stripe Payment Link for this tier -->
         <a class="btn" href="https://buy.stripe.com/YOUR_PLAN_LINK">Subscribe to Plan</a>
@@ -338,6 +341,7 @@
         <p><span class="price">£40</span> <span class="per">/ month</span></p>
         <ul>
           <li>Everything in Plan</li>
+          <li>First sessions planned from your recent training data</li>
           <li>Weekly check-ins and adjustments</li>
           <li>Feedback on every session</li>
           <li>Race-day pacing and fuelling plan</li>
@@ -346,15 +350,16 @@
       </div>
 
       <div class="plan">
-        <h3>1:1 Ultra</h3>
-        <p><span class="price">£[PRICE]</span> <span class="per">/ month</span></p>
+        <h3>1:1 Custom</h3>
+        <p><span class="price">TBD</span></p>
         <ul>
           <li>Everything in Coached</li>
-          <li>Monthly video call</li>
-          <li>Hills, kit and crew strategy</li>
+          <li>Custom plans for unique events</li>
+          <li>Support with pacing your race</li>
+          <li>Race-day and training nutrition consultation</li>
           <li>Message any time</li>
         </ul>
-        <a class="btn" href="https://buy.stripe.com/YOUR_ULTRA_LINK">Subscribe to 1:1 Ultra</a>
+        <a class="btn" href="https://buy.stripe.com/YOUR_CUSTOM_LINK">Subscribe to 1:1 Custom</a>
       </div>
     </div>
     <p class="payments-note">Secure card payments by Stripe. Manage or cancel your subscription any time from the link in your receipt email.</p>
@@ -368,7 +373,7 @@
     </details>
     <details>
       <summary>What if I get injured?</summary>
-      <p>We adjust the plan straight away and work around it, alongside advice from your physio.</p>
+      <p>On Coached and 1:1 Custom, we adjust the plan straight away and work around it, alongside advice from your physio. On Plan, pause your training and see a physio, then upgrade to Coached any time if you’d like an adjusted plan.</p>
     </details>
     <details>
       <summary>Can I cancel?</summary>
@@ -376,7 +381,7 @@
     </details>
     <details>
       <summary>Which app do I need?</summary>
-      <p>[TrainingPeaks / Strava]. The free version is fine, and it syncs with most running watches.</p>
+      <p>Strava. The free version is fine, and it syncs with most running watches.</p>
     </details>
   </section>
 
@@ -385,19 +390,23 @@
       <h2>Ready when<br><span class="hl">you are.</span></h2>
       <p class="lead">Book a free 20-minute call. No pressure, just a chat about where you want to run.</p>
 
-      <!--
-        CAL.COM EMBED
-        In Cal.com: open your "Intro call" event > Embed > Inline > copy the snippet,
-        then replace the whole <div class="cal-embed"> below with it.
-        Or, simpler: replace it with a button:
-        <a class="btn btn-primary" href="https://cal.com/YOUR-USERNAME/intro-call">Pick a time</a>
-      -->
-      <div class="cal-embed">Cal.com booking calendar goes here</div>
+      <div class="cal-embed" id="cal-inline"></div>
+      <script>
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "intro-call", { origin: "https://cal.com" });
+        Cal.ns["intro-call"]("inline", {
+          elementOrSelector: "#cal-inline",
+          calLink: "flavia-muntean-agbuif/intro-call",
+          config: { layout: "month_view", theme: "dark" },
+        });
+        Cal.ns["intro-call"]("ui", { theme: "dark", layout: "month_view", cssVarsPerTheme: { dark: { "cal-brand": "#C8F04A" } } });
+      </script>
+      <noscript><a class="btn btn-primary" href="https://cal.com/flavia-muntean-agbuif/intro-call">Pick a time</a></noscript>
     </div>
 
     <!--
       WEB3FORMS
-      1. Get a free access key at web3forms.com using John's email.
+      1. Get a free access key at web3forms.com using Joseph's email.
       2. Paste it into the access_key value below.
       Submissions are emailed straight to that address.
     -->
@@ -434,10 +443,10 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>© <span id="year">2026</span> John Doe Running Coach</span>
+    <span>© <span id="year">2026</span> Joseph Running Coach</span>
     <nav aria-label="Footer">
       <a href="https://instagram.com/YOUR_HANDLE">Instagram</a>
-      <a href="https://www.strava.com/athletes/YOUR_ID">Strava</a>
+      <a href="https://www.strava.com/athletes/53943799">Strava</a>
       <a href="#book">Contact</a>
     </nav>
   </div>
@@ -445,6 +454,14 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('.read-more').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const open = btn.closest('.quote-long').classList.toggle('open');
+      btn.textContent = open ? 'Read less' : 'Read more';
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
 
   // Sends the form without leaving the page; falls back to a normal POST if JS is off.
   const form = document.getElementById('contact-form');
@@ -465,7 +482,7 @@
       if (res.ok && data.success) {
         form.reset();
         status.className = 'form-status ok';
-        status.textContent = 'Message sent. John will reply within a couple of days.';
+        status.textContent = 'Message sent. Joseph will reply within a couple of days.';
       } else {
         throw new Error(data.message || 'Request failed');
       }
