@@ -404,15 +404,9 @@
       <noscript><a class="btn btn-primary" href="https://cal.com/flavia-muntean-agbuif/intro-call">Pick a time</a></noscript>
     </div>
 
-    <!--
-      WEB3FORMS
-      1. Get a free access key at web3forms.com using Joseph's email.
-      2. Paste it into the access_key value below.
-      Submissions are emailed straight to that address.
-    -->
-    <form class="contact" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <form class="contact" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="botcheck">
       <h3>Or send a message</h3>
-      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="form-name" value="contact">
       <input type="hidden" name="subject" value="New enquiry from the coaching website">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
@@ -473,22 +467,21 @@
     status.className = 'form-status';
     status.textContent = 'Sending…';
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
       });
-      const data = await res.json();
-      if (res.ok && data.success) {
+      if (res.ok) {
         form.reset();
         status.className = 'form-status ok';
         status.textContent = 'Message sent. Joseph will reply within a couple of days.';
       } else {
-        throw new Error(data.message || 'Request failed');
+        throw new Error('Request failed');
       }
     } catch (err) {
       status.className = 'form-status err';
-      status.textContent = 'Message not sent. Check your connection and try again, or email john@example.com.';
+      status.textContent = 'Message not sent. Check your connection and try again, or book a call above.';
     } finally {
       button.disabled = false;
     }
