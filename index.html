@@ -126,13 +126,23 @@
   .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 96px; }
   .hero-text { display: flex; flex-direction: column; gap: 28px; }
   .hero h1 {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: -14px;
+  }
+  .hero .headline {
+    font-family: var(--display);
     font-weight: 900;
     font-size: clamp(3rem, 7vw, 6rem);
     line-height: 0.92;
     letter-spacing: -0.035em;
     text-transform: uppercase;
   }
-  .hero h1 .hl { color: var(--accent); }
+  .hero .headline .hl { color: var(--accent); }
   .hero .lead { font-size: 1.15rem; color: var(--text-soft); max-width: 34rem; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -262,8 +272,9 @@
 
   <section class="wrap hero">
     <div class="hero-text">
-      <h1>Get the best out of <span class="hl">your running.</span></h1>
-      <p class="lead">Personalised training plans and real coaching for runners in Surrey and beyond, chasing a first 5K, a marathon PB or a first ultra.</p>
+      <h1>Running coach in Farnham, Surrey</h1>
+      <p class="headline">Get the best out of <span class="hl">your running.</span></p>
+      <p class="lead">Personalised training plans and real coaching for runners in Farnham, Surrey and beyond, chasing a first 5K, a marathon PB or a first ultra.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#book">Book a free intro call</a>
         <a class="btn" href="#pricing">See pricing</a>
