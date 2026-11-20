@@ -207,6 +207,15 @@
   .plan-featured .btn:hover { background: #2A2C26; border-color: #2A2C26; }
   .payments-note { margin-top: 16px; color: var(--text-muted); font-size: 14px; }
 
+  /* Purchase confirmation */
+  .confirm-buy {
+    max-width: 30rem; padding: 32px; border: 1px solid var(--line-strong); border-radius: 20px;
+    background: var(--surface); color: var(--text);
+  }
+  .confirm-buy::backdrop { background: rgb(0 0 0 / 0.7); }
+  .confirm-buy p { margin-bottom: 12px; }
+  .confirm-buy .actions { margin-top: 24px; }
+
   /* FAQ */
   .faq { max-width: 820px; }
   details { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 8px; }
@@ -306,7 +315,7 @@
       </li>
       <li>
         <h3>Check in, adjust</h3>
-        <p class="soft">Weekly feedback on your sessions, and changes when life, legs or weather get in the way.</p>
+        <p class="soft">Weekly feedback on your sessions, and changes when life gets in the way.</p>
       </li>
     </ol>
   </section>
@@ -351,7 +360,7 @@
           <li>Custom pace goals for every session</li>
           <li>Pitched at your experience and current fitness</li>
         </ul>
-        <a class="btn" href="https://buy.stripe.com/3cIeVd6aO9gqcSA5R214401">Buy Plan</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://buy.stripe.com/3cIeVd6aO9gqcSA5R214401">Buy Plan</a>
       </div>
 
       <div class="plan plan-featured">
@@ -366,7 +375,7 @@
           <li>Weekly check-ins and adjustments</li>
           <li>Race day plan</li>
         </ul>
-        <a class="btn" href="https://buy.stripe.com/3cI3cv6aOcsC9GogvG14402">Subscribe to Coached</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://buy.stripe.com/3cI3cv6aOcsC9GogvG14402">Subscribe to Coached</a>
       </div>
 
       <div class="plan">
@@ -449,18 +458,31 @@
 
       <button class="btn btn-primary" type="submit">Send message</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      <p class="payments-note">I’ll only use your details to reply to you. See the <a href="privacy.html">privacy policy</a>.</p>
     </form>
   </section>
 
 </main>
 
+<dialog class="confirm-buy" id="confirm-buy">
+  <form method="dialog">
+    <p><strong>Have we discussed your plan and agreed to go ahead with this purchase?</strong></p>
+    <p class="soft">If not, book a free intro call first.</p>
+    <div class="actions">
+      <a class="btn btn-primary" id="confirm-buy-link" target="_blank" rel="noopener">Yes, continue</a>
+      <button class="btn" value="book">Book a call first</button>
+    </div>
+  </form>
+</dialog>
+
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span id="year">2026</span> Joseph Muntean-Lee Running Coach, Farnham, Surrey</span>
     <nav aria-label="Footer">
-      <a href="https://instagram.com/YOUR_HANDLE">Instagram</a>
+      <a href="https://www.instagram.com/i_am_joseph_lee/">Instagram</a>
       <a href="https://www.strava.com/athletes/53943799">Strava</a>
       <a href="#book">Contact</a>
+      <a href="privacy.html">Privacy</a>
     </nav>
   </div>
 </footer>
@@ -474,6 +496,21 @@
       btn.textContent = open ? 'Read less' : 'Read more';
       btn.setAttribute('aria-expanded', open);
     });
+  });
+
+  // Asks buyers to confirm they've spoken to Joseph before going to Stripe checkout.
+  const confirmBuy = document.getElementById('confirm-buy');
+  document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('confirm-buy-link').href = link.href;
+      confirmBuy.returnValue = '';
+      confirmBuy.showModal();
+    });
+  });
+  document.getElementById('confirm-buy-link').addEventListener('click', () => confirmBuy.close());
+  confirmBuy.addEventListener('close', () => {
+    if (confirmBuy.returnValue === 'book') location.hash = 'book';
   });
 
   // Sends the form without leaving the page; falls back to a normal POST if JS is off.
